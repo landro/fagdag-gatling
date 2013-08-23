@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cus="http://customerservice.example.com/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cus:updateCustomer>
+            <customer>
+                <customerId>${id}</customerId>
+                <revenue>1000.0</revenue>
+            </customer>
+        </cus:updateCustomer>
+    </soapenv:Body>
+</soapenv:Envelope>
