@@ -36,7 +36,7 @@ class JMeterBenchmark extends Simulation {
       .pause(PAUSE)
   }
 
-  setUp(scn.inject(nothingFor(7 seconds),
-                   constantRate(15 usersPerSec) during (100 seconds))).protocols(httpConf)
+  setUp(scn.inject(nothingFor(2 seconds),
+                   constantRate(100 usersPerSec) during (50 seconds))).protocols(httpConf)
 
 }
