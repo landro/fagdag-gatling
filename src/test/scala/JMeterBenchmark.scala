@@ -1,6 +1,5 @@
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
-import io.gatling.http.Headers.Names._
 import bootstrap._
 import scala.concurrent.duration._
 
@@ -27,7 +26,7 @@ class JMeterBenchmark extends Simulation {
         .post("/servlet/SessionExample")
         .param("dataname", "TOTO")
         .param("datavalue", "TITI")
-        .header(CONTENT_TYPE, "application/x-www-form-urlencoded"))
+        .header("Content-Type", "application/x-www-form-urlencoded"))
        .pause(PAUSE)
       .exec(http("index")
         .get("/index.html"))
