@@ -9,6 +9,8 @@ class WsdlSimulation extends Simulation {
 
   val httpConf = http
     .baseURL("http://localhost:8080/wsdl_first/services")
+    .shareConnections
+    .baseHeaders(Map("SOAPAction" -> "", "Content-Type" -> "text/xml;charset=UTF-8"))
 
   val scn = scenario("Wsdl Simulation")
     .feed(csv("usernames.csv").random)
@@ -22,6 +24,6 @@ class WsdlSimulation extends Simulation {
       .body(ELFileBody("updateCustomer.xml")).check(status.is(202))
   )
 
-  setUp(scn.inject(ramp(10 users) over (1 seconds))).protocols(httpConf)
+  setUp(scn.inject(ramp(1 users) over (1 seconds))).protocols(httpConf)
 
 }
