@@ -1,3 +1,5 @@
+package no.bekk.fagdag
+
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import bootstrap._
@@ -19,19 +21,19 @@ class JMeterBenchmark extends Simulation {
 
   val scn = scenario("JMeter Benckmark with Gatling")
     .repeat(REPETITIONS) {
-      exec(http("sessionExample1")
+      exec(http("Session Example 1 GET")
         .get("/servlet/SessionExample"))
       .pause(PAUSE)
-      .exec(http("sessionExample2Post")
+      .exec(http("Session Example 2 POST")
         .post("/servlet/SessionExample")
         .param("dataname", "TOTO")
         .param("datavalue", "TITI")
         .header("Content-Type", "application/x-www-form-urlencoded"))
        .pause(PAUSE)
-      .exec(http("index")
+      .exec(http("Index")
         .get("/index.html"))
       .pause(PAUSE)
-      .exec(http("sessionExample3")
+      .exec(http("Session Example 3 GET")
         .get("/servlet/SessionExample"))
       .pause(PAUSE)
   }
